@@ -3,6 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // App
-import { Instagram } from './Instagram';
+import { Player } from './Player';
 
-ReactDOM.render(<Instagram />, document.getElementById('root'));
+ReactDOM.render(<Player />, document.getElementById('root'));
