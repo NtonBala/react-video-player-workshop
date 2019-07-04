@@ -50,6 +50,11 @@ export const Player = () => {
         videoRef.current.currentTime = scrubTime;
     };
 
+    /* Устанавливаем громкость первым мини-слайдером. */
+    const handleVolume = (event) => {
+        videoRef.current.volume = event.target.value;
+    };
+
     /* Добавляем слушатель вкл/выкл видео по нажатию на пробел. */
     useEffect(() => {
         const handler = (event) => {
@@ -106,6 +111,7 @@ export const Player = () => {
                     name = 'volume'
                     step = '0.05'
                     type = 'range'
+                    onChange = { handleVolume }
                 />
 
                 <button
