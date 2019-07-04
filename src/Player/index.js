@@ -55,6 +55,11 @@ export const Player = () => {
         videoRef.current.volume = event.target.value;
     };
 
+    /* Устанавливаем скорость воспроизведения вторым мини-слайдером. */
+    const handleSpeed = (event) => {
+        videoRef.current.playbackRate = event.target.value;
+    };
+
     /* Добавляем слушатель вкл/выкл видео по нажатию на пробел. */
     useEffect(() => {
         const handler = (event) => {
@@ -112,6 +117,16 @@ export const Player = () => {
                     step = '0.05'
                     type = 'range'
                     onChange = { handleVolume }
+                />
+
+                <input
+                    className = 'slider'
+                    max = '2'
+                    min = '0.5'
+                    name = 'speed'
+                    step = '0.05'
+                    type = 'range'
+                    onChange = { handleSpeed }
                 />
 
                 <button
