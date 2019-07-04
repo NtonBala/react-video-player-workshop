@@ -60,6 +60,34 @@ export const Player = () => {
         videoRef.current.playbackRate = event.target.value;
     };
 
+    /* Управляем fullscreen mode на клик по кнопке. */
+    const handleFullScreenMode = () => {
+        if (
+            !document.fullscreenElement /* Standard syntax */
+            || !document.webkitFullscreenElement /* Chrome, Safari and Opera syntax */
+            || !document.mozFullScreenElement /* Firefox syntax */
+            || !document.msFullscreenElement /* IE/Edge syntax */
+        ) {
+            if (videoRef.current.requestFullscreen) { /* Standard syntax */
+                videoRef.current.requestFullscreen();
+            } else if (videoRef.current.mozRequestFullScreen) { /* Firefox */
+                videoRef.current.mozRequestFullScreen();
+            } else if (videoRef.current.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                videoRef.current.webkitRequestFullscreen();
+            } else if (videoRef.current.msRequestFullscreen) { /* IE/Edge syntax */
+                videoRef.current.msRequestFullscreen();
+            }
+        } else if (document.exitFullscreen) { /* Standard syntax */
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge syntax */
+            document.msExitFullscreen();
+        }
+    };
+
     /* Добавляем слушатель вкл/выкл видео по нажатию на пробел. */
     useEffect(() => {
         const handler = (event) => {
@@ -140,7 +168,10 @@ export const Player = () => {
                     onClick = { skip }>
                     25s »
                 </button>
-                <button>&#10021;</button>
+
+                <button onClick = { handleFullScreenMode }>
+                    &#10021;
+                </button>
             </div>
         </div>
     );
