@@ -28,7 +28,7 @@
         "babel-plugin-dynamic-import-node": "2.3.0",
         "cross-env": "5.2.0",
         "customize-cra": "0.2.13",
-        "moment": "2.24.0",
+        "moment": "2.29.4",
         "nodegit": "0.24.3",
         "postcss-preset-env": "6.6.0",
         "react-app-rewired": "2.1.3",
